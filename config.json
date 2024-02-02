@@ -1,0 +1,9 @@
+{
+  "app_name":"iris",
+  "instance_cnt":3,
+  "ram":"2048Mi",
+  "cpu":"1024m",
+  "ram_limit":"2048Mi",
+  "cpu_limit":"2048m",
+  "ports":9090
+}
