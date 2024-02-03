@@ -12,7 +12,6 @@ jobs:
       contents: read
 
     steps:
-
     - name: checkout
       uses: actions/checkout@v2
     
