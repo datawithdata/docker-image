@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main1" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main1" ]
 
 jobs:
 
@@ -16,15 +16,21 @@ jobs:
 
     steps:
 
-
+    - name: checkout
+      uses: actions/checkout@v2
+    
     - name: configure aws credentials
       uses: aws-actions/configure-aws-credentials@v3
       with:
           role-to-assume: arn:aws:iam::270932919550:role/git-actions-iam 
           aws-region: us-east-1
+    
     - name: List s3 folders
       run: |
           aws s3 ls
-        - uses: actions/checkout@v3
+    
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run: |
+          docker build . -t ${{ github.event.repository.name }} .
+          docker tag ${{ github.event.repository.name }}:latest 
+          
