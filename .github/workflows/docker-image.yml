@@ -30,4 +30,7 @@ jobs:
           docker build -t ${{ github.event.repository.name }} .
           docker tag ${{ github.event.repository.name }}:latest 270932919550.dkr.ecr.us-east-1.amazonaws.com/${{ github.event.repository.name }}:latest
     - name: Docker Push
-      run: docker push 270932919550.dkr.ecr.us-east-1.amazonaws.com/${{ github.event.repository.name }}:latest
+      run: |
+          set -e
+          docker push 270932919550.dkr.ecr.us-east-1.amazonaws.com/${{ github.event.repository.name }}:latest
+          
