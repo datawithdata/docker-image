@@ -6,7 +6,6 @@ import json
 dynamodb = boto3.resource('dynamodb')
 s3 = boto3.client("s3")
 
-
 def download_s3():
     # Replace with your own values
     s3_location = get_s3_location()
