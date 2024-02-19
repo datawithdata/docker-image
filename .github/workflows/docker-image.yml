@@ -22,9 +22,10 @@ jobs:
           role-to-assume: arn:aws:iam::270932919550:role/git-actions-iam 
           aws-region: us-east-1
     
-    - name: List s3 folders
-      run: |
-          aws s3 ls
+    - name: setup python
+      uses: actions/setup-python@v4
+      with:
+          python-version: '3.10' # install the python version needed
     
     - name: download model
       run: |
