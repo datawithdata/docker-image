@@ -30,4 +30,7 @@ jobs:
       run : pip install boto3
       
     - name: download model
-      run: python download-model.py
+      run: |
+            python download-model.py
+            echo "install python download"
+          
