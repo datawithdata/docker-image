@@ -12,8 +12,8 @@ def download_s3():
     s3_location = get_s3_location()
     s3_path = s3_location.replace("s3://", "")
     bucket, key = s3_path.split("/", 1)
-    key = "/" + key
-    download_path = os.getcwd()+key
+    # key = "/" + key
+    download_path = os.getcwd()+"/"+key
     print("Bucket:", bucket)
     print("Key:", key)
     try:
