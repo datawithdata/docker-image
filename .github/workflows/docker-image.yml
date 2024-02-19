@@ -25,6 +25,10 @@ jobs:
       run: |
           aws s3 ls
     
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v1
+      
     - name: Build the Docker image
       run: |
           docker build -t ${{ github.event.repository.name }} .
