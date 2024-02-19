@@ -27,7 +27,8 @@ def get_s3_location():
     file_path = "config.json"
     with open(file_path, "r") as file:
         contents = file.read()
-
+    print("----------")
+    print(contents)
     table_name = "siri-model-registry"
     table = dynamodb.Table(table_name)
 
