@@ -10,7 +10,7 @@ s3 = boto3.client("s3")
 def download_s3():
     # Replace with your own values
     download_path = os.getcwd()
-    s3_location = get_s3_location
+    s3_location = get_s3_location()
     s3_path = s3_location.replace("s3://", "")
     bucket, key = s3_path.split("/", 1)
     print("Bucket:", bucket)
@@ -37,7 +37,7 @@ def get_s3_location():
     for version in response['Item']['versions']:
         if version['version'] == Decimal(contents['version']):
             s3_location = version['s3_location']
-    return s3_location
+    return str(s3_location)
 
 
 def lambda_handler():
