@@ -1,6 +1,6 @@
 {
-  "app_name":"iris",
-  "instance_cnt":3,
+  "registry-name":"test39",
+  "version":1,
   "ram":"2048Mi",
   "cpu":"1024m",
   "ram_limit":"2048Mi",
