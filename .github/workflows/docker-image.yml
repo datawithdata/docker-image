@@ -30,6 +30,4 @@ jobs:
       run : pip install boto3
       
     - name: download model
-      run: |
-          ls ${{ github.workspace }}
-          python download-model.py
+      run: python download-model.py
