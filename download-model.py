@@ -19,10 +19,13 @@ def download_s3():
         print(f"Error downloading file: {e}")
 
 
-def lambda_handler(event, context):
+def lambda_handler():
     # TODO implement
     _=download_s3()
     return {
         'statusCode': 200,
         'body': json.dumps('Hello from Lambda!')
     }
+
+if __name__ == "__main__":
+    lambda_handler()
