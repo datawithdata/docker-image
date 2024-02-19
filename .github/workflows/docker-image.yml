@@ -1,1 +1,31 @@
 
+name: Docker Image CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v2
+    
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v3
+      with:
+          role-to-assume: arn:aws:iam::270932919550:role/git-actions-iam 
+          aws-region: us-east-1
+    
+    - name: List s3 folders
+      run: |
+          aws s3 ls
+    
+    - name: download model
+      run: |
+          python3 download-model.py
