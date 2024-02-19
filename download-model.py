@@ -1,10 +1,12 @@
 import json
 import boto3
-
+import os
 def download_s3():
+    print("Download")
     # Replace with your own values
     bucket_name = "siri-model-registry"
-    download_path = "local/path/to/save/file.txt"  # Local path to save the downloaded file
+    download_path = os.getcwd()  # Local path to save the downloaded file
+    print(os.getcwd())
     
     # Create an S3 client
     s3 = boto3.client("s3")
