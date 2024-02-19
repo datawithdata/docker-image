@@ -32,5 +32,6 @@ jobs:
     - name: download model
       run: |
             python download-model.py
+            ls ${{ github.workspace }}
             echo "install python download"
           
