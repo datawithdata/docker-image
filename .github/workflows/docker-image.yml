@@ -26,9 +26,10 @@ jobs:
       uses: actions/setup-python@v4
       with:
           python-version: '3.10' # install the python version needed
-    
+    - name: Install dependencies
+      run : pip install boto3
+      
     - name: download model
       run: |
           ls ${{ github.workspace }}
-          pip install boto3
           python download-model.py
