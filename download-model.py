@@ -28,7 +28,7 @@ def get_s3_location():
     with open(file_path, "r") as file:
         contents = file.read()
 
-    table_name = os.environ['table_name']
+    table_name = "siri-model-registry"
     table = dynamodb.Table(table_name)
 
     response = table.get_item(
