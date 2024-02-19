@@ -2,7 +2,7 @@ import json
 import boto3
 import os
 from decimal import Decimal
-
+import json
 dynamodb = boto3.resource('dynamodb')
 s3 = boto3.client("s3")
 
@@ -26,7 +26,7 @@ def get_s3_location():
     # Open a file in read mode
     file_path = "config.json"
     with open(file_path, "r") as file:
-        contents = file.read()
+        contents = json.loads(file.read())
     print("----------")
     print(contents)
     print("--------")
