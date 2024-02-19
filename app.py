@@ -17,7 +17,6 @@ def predict():
         res=input_req(data['data'])
     return res
 
-
 # main driver function
 if __name__ == '__main__':
  
