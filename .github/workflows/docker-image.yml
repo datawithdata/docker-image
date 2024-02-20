@@ -46,7 +46,7 @@ jobs:
     - name: Create ECR Registry
       run: |
          aws ecr create-repository \
-         --repository-name ${{ steps.login-ecr.outputs.registry }} \
+         --repository-name ${{ github.event.repository.name }} \
          --region us-east-1 \
          --image-scanning-configuration scanOnPush=false \
       
