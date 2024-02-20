@@ -53,7 +53,7 @@ jobs:
            --image-scanning-configuration scanOnPush=false \
          else
            echo "Registry already exists, skipping creation."
-        fi
+         fi
     
     - name: Docker Push
       run: |
