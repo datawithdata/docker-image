@@ -23,7 +23,6 @@ def describe_image_version():
 
     return version
 
-
 def download_s3():
     # Replace with your own values
     s3_location = get_s3_location()
