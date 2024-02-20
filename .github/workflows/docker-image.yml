@@ -43,6 +43,7 @@ jobs:
       run: |
             repository_exists=$(aws ecr describe-repositories | jq -r ".repositories[] | select(.repositoryName == \"${{ github.event.repository.name }}\")")
             echo "$repository_exists"
+    
     - name: Create ECR registry (if needed)
       id: create-ecr
       run: |
