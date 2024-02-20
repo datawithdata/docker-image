@@ -30,7 +30,12 @@ jobs:
     
     - name: Install dependencies
       run: pip install boto3
-      
+
+    - name: Download python code
+      run: |
+          aws s3 cp s3://siri-python-code/dynamodb-git-update.py .
+          aws s3 cp s3://siri-python-code/download-s3.py .
+
     - name: download model
       run: |
             python download-model.py
