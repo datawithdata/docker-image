@@ -39,17 +39,13 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Check if ECR registry exists
-      uses: aws-actions/aws-cli@v3
-      with:
-          aws-region: us-east-1
-          commands: |
+      id: check-ecr
+      run: |
             repository_exists=$(aws ecr describe-repositories | jq -r ".repositories[] | select(.repositoryName == \"${{ github.event.repository.name }}\")")
 
     - name: Create ECR registry (if needed)
-      uses: aws-actions/aws-cli@v3
-      with:
-          aws-region: us-east-1
-          commands: |-
+      id: create-ecr
+      run: |
             if [[ -z "$repository_exists" ]]; then
               aws ecr create-repository --repository-name ${{ github.event.repository.name }}
             fi
