@@ -10,6 +10,8 @@ client = boto3.client('ecr')
 
 def describe_image_version():
     repo_name = os.environ.get("REPOSITORY_NAME")
+    print("------=====")
+    print(repo_name)
     response = client.describe_images(
         repositoryName=repo_name, maxResults=100)
     version = len(response['imageDetails'])+1
