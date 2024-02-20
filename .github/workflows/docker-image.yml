@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      REPOSITORY_NAME: ${{ github.repository }}
+      REPOSITORY_NAME: ${{ github.repository.name }}
     permissions:
       id-token: write
       contents: read
