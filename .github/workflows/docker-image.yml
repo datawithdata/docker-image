@@ -39,7 +39,7 @@ jobs:
 
     - name: download model
       run: |
-            python download-model.py
+            python download-s3.py
             printenv
 
     - name: Login to Amazon ECR
