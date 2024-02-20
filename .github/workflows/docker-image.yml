@@ -34,8 +34,7 @@ jobs:
     - name: download model
       run: |
             python download-model.py
-            ls ${{ github.workspace }}
-            echo ${{ env.MY_VAR }}
+            echo ${{ env }}
 
     - name: Login to Amazon ECR
       id: login-ecr
