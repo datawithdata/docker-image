@@ -47,4 +47,3 @@ jobs:
       run: |
           set -e
           docker push ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:latest
-          
