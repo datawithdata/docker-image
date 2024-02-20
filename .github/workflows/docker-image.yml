@@ -41,7 +41,7 @@ jobs:
     - name: Build the Docker image
       run: |
           docker build -t ${{ github.event.repository.name }} .
-          docker tag ${{ github.event.repository.name }} ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:latest
+          docker tag ${{ github.event.repository.name }}:latest ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:latest
    
     - name: Docker Push
       run: |
