@@ -51,7 +51,7 @@ jobs:
             if [[ ! -z "$repository_exists" ]]; then
               aws ecr create-repository --repository-name ${{ github.event.repository.name }}
             fi
-      
+            
     - name: Build the Docker image
       run: |
           docker build -t ${{ github.event.repository.name }} .
