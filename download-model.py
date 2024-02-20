@@ -11,17 +11,22 @@ client = boto3.client('ecr')
 def describe_image_version():
     repo_name = os.environ.get("REPOSITORY_NAME").split("/")[1]
 
-    response = client.describe_images(
-        repositoryName=repo_name, maxResults=100)
-    version = len(response['imageDetails'])+1
-    print("In version")
-    print(version)
-    
+    try:
+        response = client.describe_images(
+            repositoryName=repo_name, maxResults=100)
+        version = len(response['imageDetails'])+1
+        print("In version")
+        print(version)
+    except Exception as err:
+        print("Repo not found")
+        version = 1
+
     env_file = os.getenv('GITHUB_ENV')
     with open(env_file, "a") as myfile:
         myfile.write(f"MY_VAR={version}")
 
     return version
+
 
 def download_s3():
     # Replace with your own values
