@@ -61,6 +61,7 @@ def get_s3_location():
 def lambda_handler():
     # TODO implement
     _ = download_s3()
+    _ = describe_image_version()
     return {
         'statusCode': 200,
         'body': json.dumps('Hello from Lambda!')
