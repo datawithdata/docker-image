@@ -54,3 +54,7 @@ jobs:
       run: |
           set -e
           docker push ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:${{ env.MY_VAR }}
+    - name: Update Dynamo
+      run: |
+            python dynamodb-git-update.py
+            printenv
