@@ -47,7 +47,7 @@ def update_dynamodb(contents):
         print(str(err))
 
 
-def lambda_handler(event, context):
+def lambda_handler():
     # TODO implement
     # Replace these with your actual values
     file_path = "config.json"
