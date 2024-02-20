@@ -51,6 +51,7 @@ jobs:
            --repository-name ${{ github.event.repository.name }} \
            --region us-east-1 \
            --image-scanning-configuration scanOnPush=false \
+           echo "Created new Registry"
          else
            echo "Registry already exists, skipping creation."
          fi
