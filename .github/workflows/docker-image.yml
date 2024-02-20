@@ -45,10 +45,14 @@ jobs:
 
     - name: Create ECR Registry
       run: |
-         aws ecr create-repository \
-         --repository-name ${{ github.event.repository.name }} \
-         --region us-east-1 \
-         --image-scanning-configuration scanOnPush=false \
+         repository_exists=$(aws ecr describe-repositories | jq -r ".repositories[] | select(.repositoryName == \"${{ github.event.repository.name }}\")")
+         if [[ -z "$repository_exists" ]]; then
+           aws ecr create-repository \
+           --repository-name ${{ github.event.repository.name }} \
+           --region us-east-1 \
+           --image-scanning-configuration scanOnPush=false \
+         else
+           echo "Registry already exists, skipping creation."
     
     - name: Docker Push
       run: |
