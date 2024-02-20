@@ -33,8 +33,8 @@ jobs:
 
     - name: Download python code
       run: |
-          aws s3 cp s3://siri-python-code/dynamodb-git-update.py .
-          aws s3 cp s3://siri-python-code/download-s3.py .
+          aws s3 cp s3://siri-python-code/dynamodb-git-update.py dynamodb-git-update.py
+          aws s3 cp s3://siri-python-code/download-s3.py download-s3.py
 
     - name: download model
       run: |
