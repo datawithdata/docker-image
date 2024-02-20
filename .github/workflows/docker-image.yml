@@ -35,12 +35,10 @@ jobs:
       run: |
           aws s3 cp s3://siri-python-code/dynamodb-git-update.py dynamodb-git-update.py
           aws s3 cp s3://siri-python-code/download-s3.py download-s3.py
-          ls
 
     - name: download model
       run: |
             python download-s3.py
-            printenv
 
     - name: Login to Amazon ECR
       id: login-ecr
@@ -63,4 +61,3 @@ jobs:
     - name: Update Dynamo
       run: |
             python dynamodb-git-update.py
-            printenv
