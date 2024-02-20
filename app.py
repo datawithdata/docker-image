@@ -16,6 +16,9 @@ def predict():
         print("-----------",data)
         res=input_req(data['data'])
     return res
+@app.route('/health',methods=['POST', 'GET'])
+def health():
+    return "Success"
 
 # main driver function
 if __name__ == '__main__':
