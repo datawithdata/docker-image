@@ -34,7 +34,6 @@ jobs:
     - name: download model
       run: |
             python download-model.py
-            echo ${{ env }}
             printenv
 
     - name: Login to Amazon ECR
