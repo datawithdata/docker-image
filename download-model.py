@@ -14,7 +14,9 @@ def describe_image_version():
     response = client.describe_images(
         repositoryName=repo_name, maxResults=100)
     version = len(response['imageDetails'])+1
-
+    print("In version")
+    print(version)
+    
     env_file = os.getenv('GITHUB_ENV')
     with open(env_file, "a") as myfile:
         myfile.write(f"MY_VAR={version}")
