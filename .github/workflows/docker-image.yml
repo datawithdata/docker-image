@@ -48,6 +48,7 @@ jobs:
     - name: Create ECR registry (if needed)
       id: create-ecr
       run: |
+            echo "$repository_exists"
             if [[ ! -z "$repository_exists" ]]; then
               aws ecr create-repository --repository-name ${{ github.event.repository.name }}
             fi
