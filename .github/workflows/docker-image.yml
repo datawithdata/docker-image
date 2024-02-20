@@ -40,18 +40,10 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Check if ECR registry exists
-      id: check-ecr
-      run: |
-            repository_exists=$(aws ecr describe-repositories | jq -r ".repositories[] | select(.repositoryName == \"${{ github.event.repository.name }}\")")
-    
     - name: Create ECR registry (if needed)
       id: create-ecr
       run: |
-            echo "$repository_exists"
-            if [[ ! -z "$repository_exists" ]]; then
-              aws ecr create-repository --repository-name ${{ github.event.repository.name }}
-            fi
+           aws ecr create-repository --repository-name ${{ github.event.repository.name }} || true
             
     - name: Build the Docker image
       run: |
