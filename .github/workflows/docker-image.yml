@@ -37,11 +37,6 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-      
-    - name: Build the Docker image
-      run: |
-          docker build -t ${{ github.event.repository.name }} .
-          docker tag ${{ github.event.repository.name }}:latest ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:latest
 
     - name: Create ECR Registry
       run: |
@@ -51,9 +46,12 @@ jobs:
            --repository-name ${{ github.event.repository.name }} \
            --region us-east-1 \
            --image-scanning-configuration scanOnPush=false \
-         else
-           echo "Registry already exists, skipping creation."
          fi
+      
+    - name: Build the Docker image
+      run: |
+          docker build -t ${{ github.event.repository.name }} .
+          docker tag ${{ github.event.repository.name }}:latest ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:latest
     
     - name: Docker Push
       run: |
