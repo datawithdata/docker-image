@@ -6,10 +6,12 @@ Created on Fri Dec  9 19:29:23 2022
 """
 
 import pickle
-
+file_path = "config.json"
+with open(file_path, "r") as file:
+    contents = json.loads(file.read())
 
 def load_model():
-    loaded_model = pickle.load(open("finalized_model.sav", 'rb'))
+    loaded_model = pickle.load(open(contents['model_name'], 'rb'))
     return loaded_model
 
 def predict(loaded_model,data):
