@@ -42,7 +42,15 @@ jobs:
       run: |
           docker build -t ${{ github.event.repository.name }} .
           docker tag ${{ github.event.repository.name }}:latest ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:latest
-   
+
+    - name: Create ECR Registry
+      run: |
+         aws ecr create-repository \
+         --repository-name ${{ steps.login-ecr.outputs.registry }} \
+         --region us-east-1 \
+         --image-scanning-configuration scanOnPush=false \
+      
+    
     - name: Docker Push
       run: |
           set -e
