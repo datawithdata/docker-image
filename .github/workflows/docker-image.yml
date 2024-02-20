@@ -49,7 +49,7 @@ jobs:
       run: |
           docker build -t ${{ github.event.repository.name }} .
           docker tag ${{ github.event.repository.name }}:latest ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:${{ env.MY_VAR }}
-    
+  
     - name: Docker Push
       run: |
           set -e
