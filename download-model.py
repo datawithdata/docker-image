@@ -11,15 +11,13 @@ client = boto3.client('ecr')
 def describe_image_version():
     repo_name = os.environ.get("REPOSITORY_NAME").split("/")[1]
 
-    print("------=====")
-    print(repo_name)
     response = client.describe_images(
         repositoryName=repo_name, maxResults=100)
     version = len(response['imageDetails'])+1
-    env_file = os.getenv('GITHUB_ENV')
 
+    env_file = os.getenv('GITHUB_ENV')
     with open(env_file, "a") as myfile:
-        myfile.write("MY_VAR=version")
+        myfile.write(f"MY_VAR={version}")
 
     return version
 
