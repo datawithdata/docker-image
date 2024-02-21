@@ -40,10 +40,11 @@ jobs:
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
 
-    - name: set env
-      id: set-env
-      run: | 
-            echo "::set-output name=registry::${{ steps.login-ecr.outputs.registry }}"
+    - name: env variable for ECR
+      run: |
+        echo "My value is: $registry"
+      env:
+        MY_VARIABLE: ${{ steps.login-ecr.outputs.registry }}
    
     - name: download model
       run: |
