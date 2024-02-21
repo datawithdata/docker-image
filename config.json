@@ -4,7 +4,5 @@
   "model_name":"model",
   "ram":"2048Mi",
   "cpu":"1024m",
-  "ram_limit":"2048Mi",
-  "cpu_limit":"2048m",
-  "ports":9090
+"deployment-type":"deploy"
 }
