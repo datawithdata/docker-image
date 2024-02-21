@@ -39,16 +39,10 @@ jobs:
     - name: Login to Amazon ECR
       id: login-ecr
       uses: aws-actions/amazon-ecr-login@v1
-
-    - name: env variable for ECR
-      run: |
-        echo "My value is: $registry"
-      env:
-        registry: ${{ steps.login-ecr.outputs.registry }}
    
     - name: download model
       run: |
-            python download-s3.py
+            python download-s3.py ${{ steps.login-ecr.outputs.registry }}
 
     - name: Create ECR registry (if needed)
       id: create-ecr
