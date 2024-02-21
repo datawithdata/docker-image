@@ -42,8 +42,7 @@ jobs:
    
     - name: download model
       run: |
-            env: 
-                registry: ${{ steps.login-ecr.outputs.registry }}
+            echo "::set-output name=registry::${{ steps.login-ecr.outputs.registry }}"
             python download-s3.py
 
 
