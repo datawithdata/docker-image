@@ -44,7 +44,7 @@ jobs:
       run: |
         echo "My value is: $registry"
       env:
-        MY_VARIABLE: ${{ steps.login-ecr.outputs.registry }}
+        registry: ${{ steps.login-ecr.outputs.registry }}
    
     - name: download model
       run: |
