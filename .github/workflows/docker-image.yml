@@ -42,9 +42,9 @@ jobs:
    
     - name: download model
       run: |
+            env: registry: ${{ steps.login-ecr.outputs.registry }}
             python download-s3.py
-            env:
-              registry: ${{ steps.login-ecr.outputs.registry }}
+
 
     - name: Create ECR registry (if needed)
       id: create-ecr
