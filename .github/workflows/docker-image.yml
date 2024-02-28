@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Custom Model build
 on:
   push:
     branches: [ "main" ]
