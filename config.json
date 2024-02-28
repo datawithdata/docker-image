@@ -1,7 +1,7 @@
 {
   "registry-name":"test39",
   "model-version":1,
-  "ecr-version":"latest",
+  "ecr-version":1,
   "ram":"2048Mi",
   "cpu":"1024m",
   "deployment-type":"deploy"
