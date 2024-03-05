@@ -6,16 +6,12 @@ Created on Fri Dec  9 19:35:22 2022
 """
 
 from flask import Flask,request
-from predit import input_req
 app = Flask(__name__)
 
 @app.route('/predict',methods=['POST', 'GET'])
 def predict():
-    if request.method == 'POST':
-        data=request.get_json()
-        print("-----------",data)
-        res=input_req(data['data'])
-    return res
+    return "success"
+
 @app.route('/health',methods=['POST', 'GET'])
 def health():
     return "Success"
