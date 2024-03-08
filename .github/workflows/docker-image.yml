@@ -67,8 +67,8 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         push: true
-        context: ${{ github.event.repository.name }}
-        tags: ${{ github.event.repository.name }} ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:${{ env.new_version }}
+        image: ${{ github.workspace }}
+        tags:  ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:${{ env.new_version }}
       
     - name: Docker Push
       run: |
