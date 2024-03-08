@@ -50,12 +50,26 @@ jobs:
       run: |
            aws ecr create-repository --repository-name ${{ github.event.repository.name }} || true
             
-    - name: Build the Docker image
-      run: |
+    #- name: Build the Docker image
+     # run: |
       
-          docker build -t ${{ github.event.repository.name }} .
-          docker tag ${{ github.event.repository.name }}:latest ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:${{ env.new_version }}
-  
+      #    docker build -t ${{ github.event.repository.name }} .
+       #   docker tag ${{ github.event.repository.name }}:latest ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:${{ env.new_version }}
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v1
+
+    - name: Set up Docker buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build and push
+      id: buuld_docker
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        context: ${{ github.event.repository.name }}
+        tags: ${{ github.event.repository.name }}:latest ${{ steps.login-ecr.outputs.registry }}/${{ github.event.repository.name }}:${{ env.new_version }}
+      
     - name: Docker Push
       run: |
           set -e
