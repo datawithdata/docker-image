@@ -21,6 +21,6 @@ def predict(loaded_model,data):
 def input_req(data):
     model = load_model()
     response = predict(model,data)
-    return {"target_names":str(response[0])}
+    return {"flower_names":str(response[0])}
 
 

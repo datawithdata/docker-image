@@ -4,5 +4,6 @@
   "ecr-version":1,
   "ram":"2048Mi",
   "cpu":"1024m",
-  "deployment-type":"deploy"
+  "deployment-type":"deploy",
+  "model_name":"iris_classification.joblib"
 }
