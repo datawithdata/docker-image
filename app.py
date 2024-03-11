@@ -6,7 +6,7 @@ Created on Fri Dec  9 19:35:22 2022
 """
 
 from flask import Flask, request
-from predit import input_req
+from predict import input_req
 app = Flask(__name__)
 
 
