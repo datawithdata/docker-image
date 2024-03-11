@@ -2,9 +2,9 @@ name: Custom Model build
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main1" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main1" ]
 jobs:
   build:
     runs-on: ubuntu-latest
