@@ -19,8 +19,8 @@ def predict():
 @app.route('/health')
 def health():
     if request.method == 'GET':
-        return 200
-    return 2000
+        return "success"
+    return "Not Get call"
 
 
 # main driver function
