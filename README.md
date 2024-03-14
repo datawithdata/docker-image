@@ -10,4 +10,11 @@ A simple python code that loads the trained model for the predictions based on t
 REST API logic using Flask where our predict.py code is exposed as an API
 
 ## config.json
-JSON file where user needs to provide details like Name of the deploying model and few other system configurations 
+
+  - registry-name : Name of the model registry.  
+  - model-version: Version of the model registered.
+  - ecr-version: Docker Image version. This is used to deploy a model from Git Actions run use default in case if wanted to deploy a latest version.
+  - ram: Memory needed to provide values in MB
+  - CPU: CPU value provides the value from 0.1
+  - deployment-type: use the keyword deploy to deploy the model after successful completion of Git Actions or use Build to build only docker Image
+  - model_name: name of the trained ML model 
