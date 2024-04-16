@@ -2,14 +2,15 @@ name: Custom Model build
 
 on:
   push:
-    branches: [ "main1" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "main1" ]
+    branches: [ "main" ]
 jobs:
   build:
     runs-on: ubuntu-latest
     env:
       REPOSITORY_NAME: ${{ github.repository }}
+      s3_bucket: mlops-model-registry-270932919550
     permissions:
       id-token: write
       contents: read
@@ -34,8 +35,8 @@ jobs:
 
     - name: Download python code
       run: |
-          aws s3 cp s3://siri-python-code/dynamodb-git-update.py dynamodb-git-update.py
-          aws s3 cp s3://siri-python-code/download-s3.py download-s3.py
+          aws s3 cp s3://${{env.s3_bucket}}/dynamodb-git-update.py dynamodb-git-update.py
+          aws s3 cp s3://${{env.s3_bucket}}/download-s3.py download-s3.py
    
     - name: Login to Amazon ECR
       id: login-ecr
