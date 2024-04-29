@@ -6,4 +6,5 @@
   "cpu":"1",
   "deployment-type":"deploy",
   "model_name":"iris_classification.joblib"
+  
 }
